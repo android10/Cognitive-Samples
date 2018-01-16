@@ -1,27 +1,110 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 27
+    def config = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion config["compile_sdk"]
+    buildToolsVersion config["build_tools"]
+
     defaultConfig {
-        applicationId "com.fernando.cognitive.chatbot"
-        minSdkVersion 21
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        applicationId config["application_id"]
+        minSdkVersion config["min_sdk"]
+        targetSdkVersion config["target_sdk"]
+        versionCode config["version_code"]
+        versionName config["version_name"]
+        testInstrumentationRunner config["test_runner"]
     }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+
+    lintOptions {
+        quiet true
+        abortOnError false
+        ignoreWarnings true
+        disable 'InvalidPackage'            //Some libraries have issues with this.
+        disable 'OldTargetApi'              //Lint gives this warning but SDK 20 would be Android L Beta.
+        disable 'IconDensities'             //For testing purpose. This is safe to remove.
+        disable 'IconMissingDensityFolder'  //For testing purpose. This is safe to remove.
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('../buildsystem/debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
+
     buildTypes {
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        main.java.srcDirs += [file("$buildDir/generated/source/kapt/main")]
+        test.java.srcDirs += 'src/test/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+    }
 }
 
 dependencies {
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.0.2'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation 'junit:junit:4.12'
+    def applicationDependencies = rootProject.ext.mainApplication
+    def unitTestDependencies = rootProject.ext.unitTesting
+    def acceptanceTestDependencies = rootProject.ext.acceptanceTesting
+    def developmentDependencies = rootProject.ext.development
+
+    //Compile time dependencies
+    kapt applicationDependencies.daggerCompiler
+    compileOnly applicationDependencies.javaxAnnotation
+    compileOnly applicationDependencies.javaxInject
+
+    //Application dependencies
+    implementation applicationDependencies.kotlin
+    implementation applicationDependencies.appCompat
+    implementation applicationDependencies.constraintLayout
+    implementation applicationDependencies.recyclerView
+    implementation applicationDependencies.design
+    implementation applicationDependencies.androidAnnotations
+    implementation applicationDependencies.dagger
+    implementation applicationDependencies.rxJava
+    implementation applicationDependencies.rxAndroid
+    implementation applicationDependencies.retrofit
+    implementation applicationDependencies.retrofitAdapter
+
+    //Unit/Integration tests dependencies
+    testImplementation unitTestDependencies.kotlin
+    testImplementation unitTestDependencies.kotlinTest
+    testImplementation unitTestDependencies.robolectric
+    testImplementation unitTestDependencies.junit
+    testImplementation unitTestDependencies.mockito
+    testImplementation unitTestDependencies.kluent
+
+    //Acceptance tests dependencies
+    androidTestImplementation acceptanceTestDependencies.testRunner
+    androidTestImplementation acceptanceTestDependencies.testRules
+    androidTestImplementation acceptanceTestDependencies.espressoCore
+    androidTestImplementation acceptanceTestDependencies.espressoIntents
+    androidTestImplementation acceptanceTestDependencies.androidAnnotations
+
+    //Development dependencies
+    debugImplementation developmentDependencies.leakCanary
+    releaseImplementation developmentDependencies.leakCanaryNoop
+    testImplementation developmentDependencies.leakCanaryNoop
 }
