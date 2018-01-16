@@ -1,4 +1,4 @@
-package com.fernando.cognitive.chatbot
+package com.fernandocejas.cognitive.chatbot
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle

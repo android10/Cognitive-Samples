@@ -10,7 +10,7 @@ buildscript {
     ext.target_sdk = 27
     ext.min_sdk = 21
 
-    ext.application_id = 'com.fernando.cognitive.chatbot'
+    ext.application_id = 'com.fernandocejas.cognitive.chatbot'
     ext.version_name = '1.0'
     ext.version_code = 1
     ext.test_runner = 'android.support.test.runner.AndroidJUnitRunner'
@@ -54,6 +54,6 @@ task deployDebug(type: Exec, dependsOn: 'app:installDebug') {
         }
         def sdkDir = properties.getProperty('sdk.dir')
         def adb = "$sdkDir/platform-tools/adb"
-        commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.fernando.cognitive.chatbot/com.fernando.cognitive.chatbot.ChatActivity'
+        commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.fernandocejas.cognitive.chatbot/com.fernandocejas.cognitive.chatbot.ChatActivity'
     }
 }
