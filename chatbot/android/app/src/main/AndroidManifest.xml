@@ -12,7 +12,9 @@
       android:theme="@style/AppTheme">
 
     <!--Activities-->
-    <activity android:name="com.fernandocejas.cognitive.chatbot.ChatActivity">
+    <activity
+        android:name=".ChatActivity"
+        android:label="@string/chat_activity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
         <category android:name="android.intent.category.LAUNCHER"/>

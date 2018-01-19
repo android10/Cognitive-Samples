@@ -1,3 +1,7 @@
 <resources>
   <string name="app_name">Chatbot</string>
+  <string name="chat_activity">Chat with IBM Watson</string>
+
+  <string name="enter_message_hint">Write a message</string>
+  <string name="send_message_text">SEND</string>
 </resources>

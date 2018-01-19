@@ -1,0 +1,15 @@
+<resources>
+    <!-- Separator -->
+    <dimen name="separator_width">0dp</dimen>
+    <dimen name="separator_height">2dp</dimen>
+    <dimen name="separator_margin">2dp</dimen>
+
+    <!-- Chat -->
+    <dimen name="chat_lyt_height">48dp</dimen>
+    <dimen name="chat_btn_width">64dp</dimen>
+    <dimen name="chat_btn_height">48dp</dimen>
+    <dimen name="chat_txt_margin">16dp</dimen>
+
+    <!-- Text -->
+    <dimen name="chat_btn_text_size">14sp</dimen>
+</resources>
