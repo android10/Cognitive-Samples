@@ -1,7 +1,16 @@
 package com.fernandocejas.cognitive.chatbot
 
-/**
- * Created by fernando on 19.01.18.
- */
-class AndroidApplication {
+import android.app.Application
+import com.squareup.leakcanary.LeakCanary
+
+class AndroidApplication : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+        initializeLeakDetection()
+    }
+
+    private fun initializeLeakDetection() {
+        if (BuildConfig.DEBUG) LeakCanary.install(this)
+    }
 }
