@@ -45,6 +45,7 @@ task runAcceptanceTests(dependsOn: [':app:connectedAndroidTest']) {
 }
 
 task deployDebug(type: Exec, dependsOn: 'app:installDebug') {
+    description 'Deploys the debug version of the app to the connected device.'
     def rootDir = project.rootDir
     def localProperties = new File(rootDir, "local.properties")
     if (localProperties.exists()) {
