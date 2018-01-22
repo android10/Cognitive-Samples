@@ -8,4 +8,7 @@
   <color name="sendMessageLayoutBackground">#FFFFFF</color>
   <color name="sendMessageEditTextBackground">@android:color/transparent</color>
 
+  <color name="messageSent">#999AAA</color>
+  <color name="messageReceived">#303AAA</color>
+
 </resources>

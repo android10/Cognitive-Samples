@@ -10,6 +10,9 @@
     <dimen name="chat_btn_height">48dp</dimen>
     <dimen name="chat_txt_margin">16dp</dimen>
 
+    <!-- Messages -->
+    <dimen name="message_item_radius">20dp</dimen>
+
     <!-- Text -->
     <dimen name="chat_btn_text_size">14sp</dimen>
 </resources>
