@@ -11,8 +11,13 @@
     <dimen name="chat_txt_margin">16dp</dimen>
 
     <!-- Messages -->
-    <dimen name="message_item_radius">20dp</dimen>
+    <dimen name="message_item_radius">10dp</dimen>
+    <dimen name="message_item_margin">8dp</dimen>
+    <dimen name="message_item_padding">8dp</dimen>
+    <dimen name="message_image_size">32dp</dimen>
+    <dimen name="message_item_max_width">240dp</dimen>
 
     <!-- Text -->
     <dimen name="chat_btn_text_size">14sp</dimen>
+    <dimen name="date_time_text_size">12sp</dimen>
 </resources>
