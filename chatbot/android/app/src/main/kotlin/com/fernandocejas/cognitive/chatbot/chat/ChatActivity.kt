@@ -1,7 +1,8 @@
-package com.fernandocejas.cognitive.chatbot
+package com.fernandocejas.cognitive.chatbot.chat
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.fernandocejas.cognitive.chatbot.R
 
 class ChatActivity : AppCompatActivity() {
 

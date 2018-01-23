@@ -18,7 +18,7 @@
 
     <!--Activities-->
     <activity
-        android:name=".ChatActivity"
+        android:name=".chat.ChatActivity"
         android:label="@string/chat_activity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
