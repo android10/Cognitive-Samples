@@ -19,7 +19,7 @@ class ChatAdapter
     override fun onBindViewHolder(viewHolder: MessageViewHolder, position: Int) =
             viewHolder.bind(collection[position])
 
-    override fun getItemViewType(position: Int) = collection[position].type.layoutRes()
+    override fun getItemViewType(position: Int) = collection[position].type.layoutRes
 
     override fun getItemCount() = collection.size
 }
