@@ -13,9 +13,11 @@ class ChatAdapter
         _, _, _ -> notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = MessageViewHolder.forType(parent.inflate(viewType), viewType)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+            MessageViewHolder.forViewType(parent.inflate(viewType), viewType)
 
-    override fun onBindViewHolder(viewHolder: MessageViewHolder, position: Int) = viewHolder.bind(collection[position])
+    override fun onBindViewHolder(viewHolder: MessageViewHolder, position: Int) =
+            viewHolder.bind(collection[position])
 
     override fun getItemViewType(position: Int) = collection[position].type.layoutRes()
 

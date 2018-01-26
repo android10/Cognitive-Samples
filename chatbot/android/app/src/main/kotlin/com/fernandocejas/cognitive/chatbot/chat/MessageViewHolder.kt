@@ -6,8 +6,8 @@ import android.view.View
 sealed class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     companion object {
-        fun forType(itemView: View, type: Int): MessageViewHolder {
-            when (type) {
+        fun forViewType(itemView: View, viewType: Int): MessageViewHolder {
+            when (viewType) {
                 MessageViewModel.Type.SENT.layoutRes() -> return MessageSentViewHolder(itemView)
                 MessageViewModel.Type.RECEIVED.layoutRes() -> return MessageReceivedViewHolder(itemView)
             }
