@@ -1,13 +1,8 @@
 package com.fernandocejas.cognitive.chatbot.chat
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
-import com.fernandocejas.cognitive.chatbot.R
+import com.fernandocejas.cognitive.chatbot.BaseActivity
+import com.fernandocejas.cognitive.chatbot.BaseFragment
 
-class ChatActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_chat)
-    }
+class ChatActivity : BaseActivity() {
+    override fun fragment() = ChatFragment()
 }
