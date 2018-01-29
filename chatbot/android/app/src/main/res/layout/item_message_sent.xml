@@ -7,7 +7,7 @@
     android:paddingTop="@dimen/message_item_padding">
 
   <TextView
-      android:id="@+id/text_message"
+      android:id="@+id/text_message_sent"
       android:background="@drawable/message_sent_background"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -17,5 +17,15 @@
       android:layout_marginEnd="@dimen/message_item_margin"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+      android:id="@+id/date_time_sent"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:paddingStart="@dimen/message_item_padding"
+      android:paddingEnd="@dimen/message_item_padding"
+      app:layout_constraintTop_toBottomOf="@id/text_message_sent"
+      app:layout_constraintEnd_toEndOf="@id/text_message_sent"
+      android:textSize="@dimen/date_time_text_size" />
 
 </android.support.constraint.ConstraintLayout>

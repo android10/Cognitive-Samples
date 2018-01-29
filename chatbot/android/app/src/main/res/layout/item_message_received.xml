@@ -15,15 +15,32 @@
       android:layout_marginStart="@dimen/message_item_margin"
       app:layout_constraintLeft_toLeftOf="parent" />
 
-  <TextView
-      android:id="@+id/text_message"
-      android:background="@drawable/message_received_background"
+  <LinearLayout
+      android:id="@+id/message"
+      android:orientation="vertical"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:maxWidth="@dimen/message_item_max_width"
-      android:padding="@dimen/message_item_padding"
-      android:textColor="@color/textMessage"
       app:layout_constraintLeft_toRightOf="@+id/image_profile"
-      android:layout_marginStart="@dimen/message_item_margin" />
+      android:layout_marginStart="@dimen/message_item_margin">
+
+    <TextView
+        android:id="@+id/text_message_received"
+        android:background="@drawable/message_received_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="@dimen/message_item_max_width"
+        android:padding="@dimen/message_item_padding"
+        android:textColor="@color/textMessage" />
+
+    <TextView
+        android:id="@+id/date_time_received"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:paddingStart="@dimen/message_item_padding"
+        android:paddingEnd="@dimen/message_item_padding"
+        android:textSize="@dimen/date_time_text_size" />
+
+  </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
