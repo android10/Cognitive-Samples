@@ -1,5 +1,6 @@
 package com.fernandocejas.cognitive.chatbot.chat
 
+import com.fernandocejas.cognitive.chatbot.chat.MessageViewModel.Type.RECEIVED
 import javax.inject.Inject
 
 class ChatPresenter
@@ -9,9 +10,7 @@ class ChatPresenter
     internal lateinit var chatView: ChatView
 
     fun welcomeMessage() {
-        val textMessage = "Hi, my name is Watson... How can I help you?"
-        val hiMessage = MessageViewModel(textMessage, "10:30 PM", MessageViewModel.Type.RECEIVED)
-        chatView.renderMessage(hiMessage)
+        welcomeMessage.execute { message -> chatView.renderMessage(MessageViewModel.from(message, RECEIVED)) }
     }
 
     fun sendMessage(text: String) {
