@@ -9,7 +9,7 @@ import kotlin.properties.Delegates
 class ChatAdapter
 @Inject constructor() : RecyclerView.Adapter<MessageViewHolder>() {
 
-    internal var collection: List<MessageViewModel> by Delegates.observable(emptyList()) {
+    internal var messages: MutableList<MessageViewModel> by Delegates.observable(mutableListOf()) {
         _, _, _ -> notifyDataSetChanged()
     }
 
@@ -17,9 +17,9 @@ class ChatAdapter
             MessageViewHolder.forViewType(parent.inflate(viewType), viewType)
 
     override fun onBindViewHolder(viewHolder: MessageViewHolder, position: Int) =
-            viewHolder.bind(collection[position])
+            viewHolder.bind(messages[position])
 
-    override fun getItemViewType(position: Int) = collection[position].type.layoutRes
+    override fun getItemViewType(position: Int) = messages[position].type.layoutRes
 
-    override fun getItemCount() = collection.size
+    override fun getItemCount() = messages.size
 }

@@ -7,7 +7,8 @@ class ChatPresenter
 
     internal lateinit var chatView: ChatView
 
-    fun destroy() {
-        chatView.dispose()
+    fun sayHi() {
+        val hiMessage = MessageViewModel("Hi", "10:30 PM", MessageViewModel.Type.RECEIVED)
+        chatView.renderMessage(hiMessage)
     }
 }
