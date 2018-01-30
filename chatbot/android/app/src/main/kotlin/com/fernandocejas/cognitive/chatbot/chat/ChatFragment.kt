@@ -3,7 +3,7 @@ package com.fernandocejas.cognitive.chatbot.chat
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
-import com.fernandocejas.cognitive.chatbot.BaseFragment
+import com.fernandocejas.cognitive.chatbot.framework.BaseFragment
 import com.fernandocejas.cognitive.chatbot.R
 import kotlinx.android.synthetic.main.fragment_chat.rv_chat
 import javax.inject.Inject

@@ -1,7 +1,8 @@
-package com.fernandocejas.cognitive.chatbot
+package com.fernandocejas.cognitive.chatbot.framework
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.fernandocejas.cognitive.chatbot.R
 import com.fernandocejas.cognitive.chatbot.extension.inTransaction
 
 abstract class BaseActivity : AppCompatActivity() {
