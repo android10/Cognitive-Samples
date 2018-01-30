@@ -3,9 +3,13 @@ package com.fernandocejas.cognitive.chatbot.chat
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
-import com.fernandocejas.cognitive.chatbot.framework.BaseFragment
+import android.widget.Toast
 import com.fernandocejas.cognitive.chatbot.R
+import com.fernandocejas.cognitive.chatbot.extension.empty
+import com.fernandocejas.cognitive.chatbot.framework.BaseFragment
+import kotlinx.android.synthetic.main.fragment_chat.btn_send
 import kotlinx.android.synthetic.main.fragment_chat.rv_chat
+import kotlinx.android.synthetic.main.fragment_chat.txt_message
 import javax.inject.Inject
 
 class ChatFragment : BaseFragment(), ChatView {
@@ -30,11 +34,22 @@ class ChatFragment : BaseFragment(), ChatView {
         rv_chat.layoutManager = LinearLayoutManager(activity)
         rv_chat.adapter = chatAdapter
         chatPresenter.chatView = this
+        btn_send.setOnClickListener {
+            val message = txt_message.text.toString().trim()
+            if (message != String.empty()) {
+                sendMessage(message)
+                txt_message.text.clear()
+            }
+        }
     }
 
-    private fun welcomeMessage() = chatPresenter.sayHi()
+    private fun welcomeMessage() = chatPresenter.welcomeMessage()
+
+    private fun sendMessage(text: String) = chatPresenter.sendMessage(text)
 
     override fun renderMessage(message: MessageViewModel) {
         chatAdapter.messages.add(message)
+        //TODO: this should not go here: refactor
+        chatAdapter.notifyDataSetChanged()
     }
 }
