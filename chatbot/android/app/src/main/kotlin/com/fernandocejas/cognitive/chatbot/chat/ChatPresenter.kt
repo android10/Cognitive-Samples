@@ -12,7 +12,9 @@ class ChatPresenter
 
     fun welcomeMessage() {
         val params = WelcomeMessage.Params(chatView.context().getString(R.string.welcome_message))
-        val onSuccess = { message: Message -> chatView.renderMessage(MessageViewModel.from(message, RECEIVED)) }
+        val onSuccess = {
+            message: Message -> chatView.renderMessage(MessageViewModel.from(message, RECEIVED))
+        }
         welcomeMessage.execute(onSuccess, params)
     }
 
