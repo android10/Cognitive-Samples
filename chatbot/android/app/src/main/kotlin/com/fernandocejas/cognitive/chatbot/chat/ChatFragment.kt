@@ -1,5 +1,6 @@
 package com.fernandocejas.cognitive.chatbot.chat
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
@@ -52,4 +53,6 @@ class ChatFragment : BaseFragment(), ChatView {
         //TODO: this should not go here: refactor
         chatAdapter.notifyDataSetChanged()
     }
+
+    override fun context(): Context = context!!.applicationContext
 }
