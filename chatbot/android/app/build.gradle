@@ -77,6 +77,7 @@ dependencies {
 
     //Application dependencies
     implementation applicationDependencies.kotlin
+    implementation applicationDependencies.kotlinCoroutines
     implementation applicationDependencies.appCompat
     implementation applicationDependencies.constraintLayout
     implementation applicationDependencies.recyclerView
@@ -104,4 +105,10 @@ dependencies {
     debugImplementation developmentDependencies.leakCanary
     releaseImplementation developmentDependencies.leakCanaryNoop
     testImplementation developmentDependencies.leakCanaryNoop
+}
+
+kotlin {
+  experimental {
+    coroutines "enable"
+  }
 }

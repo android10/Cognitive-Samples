@@ -12,6 +12,7 @@ ext {
   constraintLayout_version = '1.0.2'
 
   //Third party libraries
+  kotlin_coroutines_version = '0.22.1'
   dagger_version = '2.9'
   javaxAnnotations_version = '1.0'
   javaxInject_version = '1'
@@ -32,6 +33,7 @@ ext {
 
   mainApplication = [
       kotlin:                     "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+      kotlinCoroutines:           "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version",
       appCompat:                  "com.android.support:appcompat-v7:$appCompat_version",
       constraintLayout:           "com.android.support.constraint:constraint-layout:$constraintLayout_version",
       recyclerView:               "com.android.support:recyclerview-v7:$appCompat_version",

@@ -8,7 +8,7 @@ import javax.inject.Inject
 class WelcomeMessage
 @Inject constructor() : UseCase<Message, Params>() {
 
-    override fun build(params: Params) = Message(params.text, DateTime.now())
+    override suspend fun build(params: Params) = Message(params.text, DateTime.now())
 
     data class Params(val text: String)
 }

@@ -7,7 +7,7 @@ import javax.inject.Inject
 class SendMessage
 @Inject constructor() : UseCase<Message, Params>() {
 
-    override fun build(params: Params): Message = TODO()
+    override suspend fun build(params: Params): Message = TODO()
 
     data class Params(val text: String)
 }
