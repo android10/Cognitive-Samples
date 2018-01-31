@@ -83,10 +83,7 @@ dependencies {
     implementation applicationDependencies.design
     implementation applicationDependencies.androidAnnotations
     implementation applicationDependencies.dagger
-    implementation applicationDependencies.rxJava
-    implementation applicationDependencies.rxAndroid
     implementation applicationDependencies.retrofit
-    implementation applicationDependencies.retrofitAdapter
 
     //Unit/Integration tests dependencies
     testImplementation unitTestDependencies.kotlin
