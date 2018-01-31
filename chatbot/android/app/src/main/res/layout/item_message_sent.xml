@@ -26,6 +26,7 @@
       android:paddingEnd="@dimen/message_item_padding"
       app:layout_constraintTop_toBottomOf="@id/text_message_sent"
       app:layout_constraintEnd_toEndOf="@id/text_message_sent"
-      android:textSize="@dimen/date_time_text_size" />
+      android:textSize="@dimen/date_time_text_size"
+      android:visibility="invisible"/>
 
 </android.support.constraint.ConstraintLayout>

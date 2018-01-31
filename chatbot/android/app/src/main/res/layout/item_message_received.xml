@@ -39,7 +39,8 @@
         android:layout_gravity="end"
         android:paddingStart="@dimen/message_item_padding"
         android:paddingEnd="@dimen/message_item_padding"
-        android:textSize="@dimen/date_time_text_size" />
+        android:textSize="@dimen/date_time_text_size"
+        android:visibility="invisible"/>
 
   </LinearLayout>
 

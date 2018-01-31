@@ -27,8 +27,7 @@ class ChatFragment : BaseFragment(), ChatView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initializeView()
-        if (firstTimeCreated(savedInstanceState)) welcomeMessage()
+        if (firstTimeCreated(savedInstanceState)) initializeView()
     }
 
     private fun initializeView() {
@@ -43,8 +42,6 @@ class ChatFragment : BaseFragment(), ChatView {
             }
         }
     }
-
-    private fun welcomeMessage() = chatPresenter.welcomeMessage()
 
     private fun sendMessage(text: String) = chatPresenter.sendMessage(text)
 

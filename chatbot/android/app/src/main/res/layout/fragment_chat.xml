@@ -11,7 +11,9 @@
       android:layout_height="match_parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintLeft_toRightOf="parent"/>
+      app:layout_constraintLeft_toRightOf="parent"
+      app:stackFromEnd="true"
+      app:reverseLayout="true"/>
 
     <View
         android:layout_width="@dimen/separator_width"
