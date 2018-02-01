@@ -5,10 +5,10 @@ import com.fernandocejas.cognitive.chatbot.framework.UseCase
 import javax.inject.Inject
 
 class SendMessage
-@Inject constructor(private val chatRepository: ChatRepository) : UseCase<Message, Params>() {
+@Inject constructor(private val chatApi: ChatApi) : UseCase<Message, Params>() {
 
     override suspend fun run(params: Params): Message =
-            chatRepository.sendMessage(params.requestMessage)
+            chatApi.sendMessage(params.requestMessage)
 
     data class Params(val requestMessage: Message)
 }

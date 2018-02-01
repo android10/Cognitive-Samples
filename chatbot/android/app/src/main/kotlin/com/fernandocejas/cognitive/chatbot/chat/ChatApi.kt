@@ -3,7 +3,7 @@ package com.fernandocejas.cognitive.chatbot.chat
 import com.fernandocejas.cognitive.chatbot.util.DateTime
 import javax.inject.Inject
 
-class ChatRepository
+class ChatApi
 @Inject constructor() {
 
     fun sendMessage(message: Message): Message {
