@@ -24,14 +24,14 @@ sealed class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVie
     internal class MessageSentViewHolder(itemView: View) : MessageViewHolder(itemView) {
         override fun bind(messageViewModel: MessageViewModel) {
             itemView.text_message_sent.text = messageViewModel.message
-            itemView.date_time_sent.text = messageViewModel.createdAt
+            itemView.date_time_sent.text = messageViewModel.createdAt.time()
         }
     }
 
     internal class MessageReceivedViewHolder(itemView: View) : MessageViewHolder(itemView) {
         override fun bind(messageViewModel: MessageViewModel) {
             itemView.text_message_received.text = messageViewModel.message
-            itemView.date_time_received.text = messageViewModel.createdAt
+            itemView.date_time_received.text = messageViewModel.createdAt.time()
         }
     }
 }

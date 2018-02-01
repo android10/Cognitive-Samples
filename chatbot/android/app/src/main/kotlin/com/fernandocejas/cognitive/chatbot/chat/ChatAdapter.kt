@@ -14,7 +14,7 @@ class ChatAdapter
 @Inject constructor(context: Context) : RecyclerView.Adapter<MessageViewHolder>() {
 
     private val initialValue =
-            MessageViewModel(context.getString(R.string.welcome_message), DateTime.now().time(), RECEIVED)
+            MessageViewModel(context.getString(R.string.welcome_message), DateTime.now(), RECEIVED)
 
     internal var messages: MutableList<MessageViewModel> by
             Delegates.observable(mutableListOf(initialValue)) { _, _, _ -> notifyDataSetChanged() }

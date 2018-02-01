@@ -6,8 +6,10 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.Toast
 import com.fernandocejas.cognitive.chatbot.R
+import com.fernandocejas.cognitive.chatbot.chat.MessageViewModel.Type.SENT
 import com.fernandocejas.cognitive.chatbot.extension.empty
 import com.fernandocejas.cognitive.chatbot.framework.BaseFragment
+import com.fernandocejas.cognitive.chatbot.util.DateTime
 import kotlinx.android.synthetic.main.fragment_chat.btn_send
 import kotlinx.android.synthetic.main.fragment_chat.rv_chat
 import kotlinx.android.synthetic.main.fragment_chat.txt_message
@@ -43,7 +45,8 @@ class ChatFragment : BaseFragment(), ChatView {
         }
     }
 
-    private fun sendMessage(text: String) = chatPresenter.sendMessage(text)
+    private fun sendMessage(text: String) =
+            chatPresenter.sendMessage(MessageViewModel(text, DateTime.now(), SENT))
 
     override fun renderMessage(message: MessageViewModel) {
         chatAdapter.messages.add(message)
