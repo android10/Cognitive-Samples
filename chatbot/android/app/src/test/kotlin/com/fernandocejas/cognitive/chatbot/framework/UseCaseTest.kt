@@ -1,7 +1,6 @@
 package com.fernandocejas.cognitive.chatbot.framework
 
 import com.fernandocejas.cognitive.chatbot.AndroidTest
-import com.fernandocejas.cognitive.chatbot.UnitTest
 import kotlinx.coroutines.experimental.runBlocking
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
