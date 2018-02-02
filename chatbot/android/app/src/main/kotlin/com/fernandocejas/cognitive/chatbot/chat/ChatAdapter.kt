@@ -2,6 +2,7 @@ package com.fernandocejas.cognitive.chatbot.chat
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.ViewGroup
 import com.fernandocejas.cognitive.chatbot.R
 import com.fernandocejas.cognitive.chatbot.chat.MessageViewModel.Type.RECEIVED
@@ -16,8 +17,8 @@ class ChatAdapter
     private val initialValue =
             MessageViewModel(context.getString(R.string.welcome_message), DateTime.now(), RECEIVED)
 
-    internal var messages: MutableList<MessageViewModel> by
-            Delegates.observable(mutableListOf(initialValue)) { _, _, _ -> notifyDataSetChanged() }
+    internal var messages: List<MessageViewModel> by
+            Delegates.observable(listOf(initialValue)) { _, _, _ -> notifyDataSetChanged() }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
             MessageViewHolder.forViewType(parent.inflate(viewType), viewType)

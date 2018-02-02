@@ -49,9 +49,7 @@ class ChatFragment : BaseFragment(), ChatView {
             chatPresenter.sendMessage(MessageViewModel(text, DateTime.now(), SENT))
 
     override fun renderMessage(message: MessageViewModel) {
-        chatAdapter.messages.add(message)
-        //TODO: this should not go here: refactor
-        chatAdapter.notifyDataSetChanged()
+        chatAdapter.messages = chatAdapter.messages.plus(message)
     }
 
     override fun context(): Context = context!!.applicationContext
