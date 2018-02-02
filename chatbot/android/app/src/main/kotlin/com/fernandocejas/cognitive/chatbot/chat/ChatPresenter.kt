@@ -12,7 +12,7 @@ class ChatPresenter
         chatView.renderMessage(message)
 
         val params = SendMessage.Params(Message(message.message, message.createdAt))
-        val onSuccess = { message: Message -> chatView.renderMessage(MessageViewModel.from(message, RECEIVED)) }
+        val onSuccess = { respondMsg: Message -> chatView.renderMessage(MessageViewModel.from(respondMsg, RECEIVED)) }
         sendMessage.execute(onSuccess, params)
     }
 }

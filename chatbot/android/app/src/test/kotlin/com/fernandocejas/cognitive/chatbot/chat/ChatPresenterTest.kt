@@ -1,6 +1,11 @@
 package com.fernandocejas.cognitive.chatbot.chat
 
 import com.fernandocejas.cognitive.chatbot.UnitTest
+import com.fernandocejas.cognitive.chatbot.chat.MessageViewModel.Type.SENT
+import com.fernandocejas.cognitive.chatbot.util.DateTime
+import com.nhaarman.mockito_kotlin.any
+import com.nhaarman.mockito_kotlin.eq
+import com.nhaarman.mockito_kotlin.verify
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -18,10 +23,20 @@ class ChatPresenterTest : UnitTest() {
     }
 
     @Test fun `should render sent message`() {
+        val message = MessageViewModel("Test", DateTime.now(), SENT)
+        chatPresenter.sendMessage(message)
 
+        verify(chatView).renderMessage(message)
     }
 
-    @Test fun `should render response message`() {
+    @Test fun `should execute use case and render response message`() {
+        val message = MessageViewModel("Test", DateTime.now(), SENT)
+        chatPresenter.sendMessage(message)
 
+        val params = SendMessage.Params(Message(message.message, message.createdAt))
+
+        verify(sendMessage).execute(any(), eq(params))
+        verify(chatView).renderMessage(message)
+        verify(chatView).renderMessage(any())
     }
 }
