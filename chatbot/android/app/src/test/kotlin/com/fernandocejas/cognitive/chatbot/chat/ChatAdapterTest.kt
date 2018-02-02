@@ -24,16 +24,16 @@ class ChatAdapterTest : AndroidTest() {
     }
 
     @Test fun `item count should return message collection size`() {
-        chatAdapter.messages.add(MessageViewModel("Test 01", DateTime.now().time(), SENT))
-        chatAdapter.messages.add(MessageViewModel("Test 02", DateTime.now().time(), RECEIVED))
+        chatAdapter.messages.add(MessageViewModel("Test 01", DateTime.now(), SENT))
+        chatAdapter.messages.add(MessageViewModel("Test 02", DateTime.now(), RECEIVED))
 
         chatAdapter.itemCount shouldBe chatAdapter.messages.size
     }
 
     @Test fun `should return correct item view type`() {
-        chatAdapter.messages.add(MessageViewModel("Test 01", DateTime.now().time(), SENT))
-        chatAdapter.messages.add(MessageViewModel("Test 02", DateTime.now().time(), RECEIVED))
-        chatAdapter.messages.add(MessageViewModel("Test 02", DateTime.now().time(), RECEIVED))
+        chatAdapter.messages.add(MessageViewModel("Test 01", DateTime.now(), SENT))
+        chatAdapter.messages.add(MessageViewModel("Test 02", DateTime.now(), RECEIVED))
+        chatAdapter.messages.add(MessageViewModel("Test 02", DateTime.now(), RECEIVED))
 
         chatAdapter.getItemViewType(0) shouldEqual R.layout.item_message_received
         chatAdapter.getItemViewType(1) shouldEqual R.layout.item_message_sent
