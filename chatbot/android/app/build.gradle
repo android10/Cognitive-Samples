@@ -92,6 +92,8 @@ dependencies {
     implementation applicationDependencies.androidAnnotations
     implementation applicationDependencies.dagger
     implementation applicationDependencies.retrofit
+    implementation applicationDependencies.retrofitGsonConverter
+    implementation applicationDependencies.gson
 
     //Unit/Integration tests dependencies
     testImplementation unitTestDependencies.kotlin
