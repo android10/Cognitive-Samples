@@ -12,7 +12,7 @@ class SendMessageTest : AndroidTest() {
 
     private lateinit var sendMessage: SendMessage
 
-    @Mock private lateinit var chatApi: ChatApi
+    @Mock private lateinit var chatApi: ChatCarTasks
 
     @Before fun setUp() {
         sendMessage = SendMessage(chatApi)
