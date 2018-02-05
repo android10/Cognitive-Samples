@@ -16,12 +16,6 @@ class ChatApi
     fun startConversation() = restApi.startConversation(Rest.VERSION).execute().body()!!
     fun sendMessage(inputMessage: Message) = restApi.sendMessage(Rest.VERSION).execute().body()!!
 
-    private fun createRequestBody(): String {
-        return "{ \"input\": { \"text\": \"I would like some pizza\" }, " +
-                "\"alternate_intents\": true, " +
-                "\"context\": { \"conversation_id\":\"4606bf9f-0053-45ef-b399-ee686150e743\" } }"
-    }
-
     interface Rest {
         companion object {
             const val USER = "5bb88465-2121-4676-8122-2410505c1d87"
