@@ -20,20 +20,20 @@ class ChatApi
         companion object {
             const val USER = "5bb88465-2121-4676-8122-2410505c1d87"
             const val PASS = "vRHx3f7Z8jac"
+
+            const val PARAM_VERSION = "version"
             const val VERSION = "2017-05-26"
-            //Api Urls
+
             const val ENDPOINT_BASE = "https://gateway.watsonplatform.net/conversation/api/v1/workspaces/cbdb4b9c-b231-40f8-ba56-78e48d66eaae/"
             const val ENDPOINT_MESSAGE = "message"
-            //Header Params
+
             const val PARAM_CONVERSATION_ID = "conversation_id"
-            //Query Params
-            const val QUERY_PARAM_VERSION = "version"
         }
 
-        @POST(ENDPOINT_MESSAGE) fun startConversation(@Query(QUERY_PARAM_VERSION) version: String):
+        @POST(ENDPOINT_MESSAGE) fun startConversation(@Query(PARAM_VERSION) version: String):
                 Call<MessageEntity>
 
-        @POST(ENDPOINT_MESSAGE) fun sendMessage(@Query(QUERY_PARAM_VERSION) version: String):
+        @POST(ENDPOINT_MESSAGE) fun sendMessage(@Query(PARAM_VERSION) version: String):
                 Call<MessageEntity>
     }
 
