@@ -1,43 +1,47 @@
 package com.fernandocejas.cognitive.chatbot.chat
 
-import retrofit2.Call
-import retrofit2.Retrofit
-import retrofit2.http.POST
-import retrofit2.http.Query
+import com.ibm.watson.developer_cloud.conversation.v1.Conversation
+import com.ibm.watson.developer_cloud.conversation.v1.model.Context
+import com.ibm.watson.developer_cloud.conversation.v1.model.InputData
+import com.ibm.watson.developer_cloud.conversation.v1.model.MessageOptions
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class ChatApi
-@Inject constructor(retrofit: Retrofit) {
+@Inject constructor() {
 
-    private val restApi by lazy { retrofit.create(Rest::class.java) }
+    private val USER = "5bb88465-2121-4676-8122-2410505c1d87"
+    private val PASS = "vRHx3f7Z8jac"
 
-    fun startConversation() = restApi.startConversation(Rest.VERSION).execute().body()!!
-    fun sendMessage(inputMessage: Message) = restApi.sendMessage(Rest.VERSION).execute().body()!!
+    private var conversationContext: Context? = null
+    private val service: Conversation by lazy { Conversation(Conversation.VERSION_DATE_2017_05_26) }
 
-    interface Rest {
-        companion object {
-            const val USER = "5bb88465-2121-4676-8122-2410505c1d87"
-            const val PASS = "vRHx3f7Z8jac"
-
-            const val PARAM_VERSION = "version"
-            const val VERSION = "2017-05-26"
-
-            const val ENDPOINT_BASE = "https://gateway.watsonplatform.net/conversation/api/v1/workspaces/cbdb4b9c-b231-40f8-ba56-78e48d66eaae/"
-            const val ENDPOINT_MESSAGE = "message"
-
-            const val PARAM_CONVERSATION_ID = "conversation_id"
-        }
-
-        @POST(ENDPOINT_MESSAGE) fun startConversation(@Query(PARAM_VERSION) version: String):
-                Call<MessageEntity>
-
-        @POST(ENDPOINT_MESSAGE) fun sendMessage(@Query(PARAM_VERSION) version: String):
-                Call<MessageEntity>
+    init {
+        service.setUsernameAndPassword(USER, PASS)
     }
 
-    class RequestBody
+    fun startConversation(): MessageEntity {
+        val input = InputData.Builder("Hi").build()
+        val options = MessageOptions.Builder("cbdb4b9c-b231-40f8-ba56-78e48d66eaae").input(input).build()
+        val response = service.message(options).execute()
+
+        conversationContext = response.context
+
+        return MessageEntity(response.input.text, response.output.text)
+    }
+
+    fun sendMessage(inputMessage: Message): MessageEntity {
+        val newMessageOptions = MessageOptions.Builder()
+                .workspaceId("cbdb4b9c-b231-40f8-ba56-78e48d66eaae")
+                .input(InputData.Builder(inputMessage.text).build())
+                .context(conversationContext)
+                .build()
+
+        val response = service.message(newMessageOptions).execute()
+
+        return MessageEntity(response.input.text, response.output.text)
+    }
 }
 
 

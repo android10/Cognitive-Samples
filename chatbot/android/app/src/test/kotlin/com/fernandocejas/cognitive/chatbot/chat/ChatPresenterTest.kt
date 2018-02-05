@@ -15,10 +15,11 @@ class ChatPresenterTest : UnitTest() {
     private lateinit var chatPresenter: ChatPresenter
 
     @Mock private lateinit var chatView: ChatView
+    @Mock private lateinit var startConversation: StartConversation
     @Mock private lateinit var sendMessage: SendMessage
 
     @Before fun setUp() {
-        chatPresenter = ChatPresenter(sendMessage)
+        chatPresenter = ChatPresenter(startConversation, sendMessage)
         chatPresenter.chatView = chatView
     }
 

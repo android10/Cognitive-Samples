@@ -7,8 +7,8 @@ import javax.inject.Inject
 class ChatDataSource
 @Inject constructor(private val chatApi: ChatApi) {
 
-    fun startConversation() = buildOutputMessage(chatApi.startConversation().output.text)
-    fun sendMessage(inputMessage: Message) = buildOutputMessage(chatApi.sendMessage(inputMessage).output.text)
+    fun startConversation() = buildOutputMessage(chatApi.startConversation().output)
+    fun sendMessage(inputMessage: Message) = buildOutputMessage(chatApi.sendMessage(inputMessage).output)
 
     private fun buildOutputMessage(strings: List<String>): Message {
         val outputMessage = StringBuilder()
