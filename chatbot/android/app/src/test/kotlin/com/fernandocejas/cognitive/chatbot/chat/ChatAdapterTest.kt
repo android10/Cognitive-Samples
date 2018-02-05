@@ -15,12 +15,7 @@ class ChatAdapterTest : AndroidTest() {
     private lateinit var chatAdapter: ChatAdapter
 
     @Before fun setUp() {
-        chatAdapter = ChatAdapter(context())
-    }
-
-    @Test fun `should initialize with greeting message`() {
-        chatAdapter.messages.size shouldBe 1
-        chatAdapter.messages[0].message shouldBe context().getString(R.string.welcome_message)
+        chatAdapter = ChatAdapter()
     }
 
     @Test fun `item count should return message collection size`() {
@@ -37,12 +32,11 @@ class ChatAdapterTest : AndroidTest() {
                 .plus(MessageViewModel("Test 02", DateTime.now(), RECEIVED))
                 .plus(MessageViewModel("Test 02", DateTime.now(), RECEIVED))
 
-        chatAdapter.getItemViewType(0) shouldEqual R.layout.item_message_received
-        chatAdapter.getItemViewType(1) shouldEqual R.layout.item_message_sent
+        chatAdapter.getItemViewType(0) shouldEqual R.layout.item_message_sent
+        chatAdapter.getItemViewType(1) shouldEqual R.layout.item_message_received
         chatAdapter.getItemViewType(2) shouldEqual R.layout.item_message_received
-        chatAdapter.getItemViewType(3) shouldEqual R.layout.item_message_received
 
-        chatAdapter.messages.size shouldBe 4
-        chatAdapter.itemCount shouldBe 4
+        chatAdapter.messages.size shouldBe 3
+        chatAdapter.itemCount shouldBe 3
     }
 }

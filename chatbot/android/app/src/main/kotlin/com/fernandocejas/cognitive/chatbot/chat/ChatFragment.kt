@@ -29,7 +29,10 @@ class ChatFragment : BaseFragment(), ChatView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (firstTimeCreated(savedInstanceState)) initializeView()
+        if (firstTimeCreated(savedInstanceState)) {
+            initializeView()
+            chatPresenter.startConversation()
+        }
     }
 
     private fun initializeView() {

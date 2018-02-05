@@ -8,6 +8,10 @@ class ChatPresenter
 
     internal lateinit var chatView: ChatView
 
+    fun startConversation() {
+
+    }
+
     fun sendMessage(message: MessageViewModel) {
         chatView.renderMessage(message)
 

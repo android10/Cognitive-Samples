@@ -4,6 +4,4 @@
 
   <string name="enter_message_hint">Write a message</string>
   <string name="send_message_text">SEND</string>
-
-  <string name="welcome_message">Hi, my name is Watson.\nHow can I help you?</string>
 </resources>

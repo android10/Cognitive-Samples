@@ -12,10 +12,10 @@ class SendMessageTest : AndroidTest() {
 
     private lateinit var sendMessage: SendMessage
 
-    @Mock private lateinit var chatApi: ChatApi
+    @Mock private lateinit var chatDataSource: ChatDataSource
 
     @Before fun setUp() {
-        sendMessage = SendMessage(chatApi)
+        sendMessage = SendMessage(chatDataSource)
     }
 
     @Test fun `should get message result from api`() {
@@ -24,6 +24,6 @@ class SendMessageTest : AndroidTest() {
 
         runBlocking { sendMessage.execute({}, params) }
 
-        verify(chatApi).sendMessage(params.requestMessage)
+        verify(chatDataSource).sendMessage(params.requestMessage)
     }
 }

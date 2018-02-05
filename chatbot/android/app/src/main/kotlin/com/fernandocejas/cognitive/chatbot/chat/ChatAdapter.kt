@@ -1,24 +1,16 @@
 package com.fernandocejas.cognitive.chatbot.chat
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.ViewGroup
-import com.fernandocejas.cognitive.chatbot.R
-import com.fernandocejas.cognitive.chatbot.chat.MessageViewModel.Type.RECEIVED
 import com.fernandocejas.cognitive.chatbot.extension.inflate
-import com.fernandocejas.cognitive.chatbot.util.DateTime
 import javax.inject.Inject
 import kotlin.properties.Delegates
 
 class ChatAdapter
-@Inject constructor(context: Context) : RecyclerView.Adapter<MessageViewHolder>() {
-
-    private val initialValue =
-            MessageViewModel(context.getString(R.string.welcome_message), DateTime.now(), RECEIVED)
+@Inject constructor() : RecyclerView.Adapter<MessageViewHolder>() {
 
     internal var messages: List<MessageViewModel> by
-            Delegates.observable(listOf(initialValue)) { _, _, _ -> notifyDataSetChanged() }
+            Delegates.observable(emptyList()) { _, _, _ -> notifyDataSetChanged() }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
             MessageViewHolder.forViewType(parent.inflate(viewType), viewType)
