@@ -1,22 +1,25 @@
 package com.fernandocejas.cognitive.chatbot.chat
 
 import com.fernandocejas.cognitive.chatbot.chat.MessageViewModel.Type.RECEIVED
+import com.fernandocejas.cognitive.chatbot.framework.UseCase.None
 import javax.inject.Inject
 
 class ChatPresenter
-@Inject constructor(private val sendMessage: SendMessage) {
+@Inject constructor(private val startConversation: StartConversation, private val sendMessage: SendMessage) {
 
     internal lateinit var chatView: ChatView
 
     fun startConversation() {
-
+        startConversation.execute(onSuccess(), None())
     }
 
     fun sendMessage(message: MessageViewModel) {
-        chatView.renderMessage(message)
+        renderMessage(message)
 
         val params = SendMessage.Params(Message(message.message, message.createdAt))
-        val onSuccess = { respondMsg: Message -> chatView.renderMessage(MessageViewModel.from(respondMsg, RECEIVED)) }
-        sendMessage.execute(onSuccess, params)
+        sendMessage.execute(onSuccess(), params)
     }
+
+    private fun onSuccess() = { outputMessage: Message -> renderMessage(MessageViewModel.from(outputMessage, RECEIVED)) }
+    private fun renderMessage(message: MessageViewModel) = chatView.renderMessage(message)
 }

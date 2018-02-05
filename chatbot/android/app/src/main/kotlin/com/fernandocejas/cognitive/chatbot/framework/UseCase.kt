@@ -13,4 +13,6 @@ abstract class UseCase<out Type, in Params> where Type : Any {
         val result = async(CommonPool) { run(params) }
         launch(UI) { onSuccess.invoke(result.await()) }
     }
+
+    class None
 }
