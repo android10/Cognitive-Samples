@@ -1,9 +1,7 @@
 package com.fernandocejas.cognitive.chatbot.chat
 
-import android.util.Log
 import retrofit2.Call
 import retrofit2.Retrofit
-import retrofit2.http.Body
 import retrofit2.http.POST
 import retrofit2.http.Query
 import javax.inject.Inject
@@ -15,23 +13,8 @@ class ChatApi
 
     private val restApi by lazy { retrofit.create(Rest::class.java) }
 
-    fun startConversation(): MessageEntity {
-        return restApi.startConversation(Rest.VERSION).execute().body()!!
-    }
-
-    fun sendMessage(message: Message): MessageEntity {
-        val response = restApi.sendMessage(Rest.VERSION).execute()
-        Log.d("Fernando", "This is the message: ${response.message()}")
-        Log.d("Fernando", "This is the error body: ${response.errorBody().toString()}")
-        Log.d("Fernando", "This is the headers: ${response.headers()}")
-
-        Log.d("Fernando", "This is the request body: ${response.raw().request().headers()}")
-        Log.d("Fernando", "This is the request body: ${response.raw().request().method()}")
-        Log.d("Fernando", "This is the request body: ${response.raw().request().body().toString()}")
-
-        val messageEntity = response.body()!!
-        return messageEntity
-    }
+    fun startConversation() = restApi.startConversation(Rest.VERSION).execute().body()!!
+    fun sendMessage(inputMessage: Message) = restApi.sendMessage(Rest.VERSION).execute().body()!!
 
     private fun createRequestBody(): String {
         return "{ \"input\": { \"text\": \"I would like some pizza\" }, " +

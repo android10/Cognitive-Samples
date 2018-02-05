@@ -6,5 +6,5 @@ import javax.inject.Inject
 class ChatDataSource
 @Inject constructor(private val chatApi: ChatApi) {
     fun startConversation() = Message(chatApi.startConversation().output.text[0], DateTime.now())
-    fun sendMessage(message: Message) =  Message(chatApi.sendMessage(message).output.text[0], DateTime.now())
+    fun sendMessage(inputMessage: Message) =  Message(chatApi.sendMessage(inputMessage).output.text[0], DateTime.now())
 }
