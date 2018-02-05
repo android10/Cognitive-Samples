@@ -17,6 +17,7 @@ ext {
   javaxAnnotations_version = '1.0'
   javaxInject_version = '1'
   retrofit_version = '2.3.0'
+  okhttp_logging_interceptor_version = '3.8.1'
   gson_version = '2.6.1'
 
   //Unit Testing
@@ -47,6 +48,7 @@ ext {
       javaxInject:                "javax.inject:javax.inject:$javaxInject_version",
       retrofit:                   "com.squareup.retrofit2:retrofit:$retrofit_version",
       retrofitGsonConverter:      "com.squareup.retrofit2:converter-gson:$retrofit_version",
+      okhttpLoggingInterceptor:   "com.squareup.okhttp3:logging-interceptor:$okhttp_logging_interceptor_version",
       gson:                       "com.google.code.gson:gson:$gson_version",
   ]
 
