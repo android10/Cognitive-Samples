@@ -5,3 +5,6 @@ class MessageEntity(val input: Input, val output: Output, val context: Context) 
     class Output(val text: List<String>)
     class Context(val conversation_id: String)
 }
+
+
+

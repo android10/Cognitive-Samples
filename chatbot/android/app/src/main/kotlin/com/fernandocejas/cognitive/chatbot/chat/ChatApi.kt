@@ -37,7 +37,7 @@ class ChatApi
                 Call<MessageEntity>
     }
 
-    class RequestBody()
+    class RequestBody
 }
 
 
