@@ -7,10 +7,10 @@ import javax.inject.Inject
 class ChatDataSource
 @Inject constructor(private val chatService: ChatService) {
 
-    fun startConversation() = buildOutputMessage(chatService.startConversation().output)
-    fun sendMessage(inputMessage: Message) = buildOutputMessage(chatService.sendMessage(inputMessage).output)
+    fun startConversation() = messageFrom(chatService.startConversation().output)
+    fun sendMessage(inputMessage: Message) = messageFrom(chatService.sendMessage(inputMessage).output)
 
-    private fun buildOutputMessage(strings: List<String>): Message {
+    private fun messageFrom(strings: List<String>): Message {
         val outputMessage = StringBuilder()
         strings.forEach { outputMessage.append(it).append(String.space()) }
 
