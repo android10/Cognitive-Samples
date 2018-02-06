@@ -7,7 +7,6 @@ import javax.inject.Singleton
 
 @Module
 class NetworkModule {
-
     companion object {
         const val USER = "5bb88465-2121-4676-8122-2410505c1d87"
         const val PASS = "vRHx3f7Z8jac"

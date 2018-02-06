@@ -5,10 +5,10 @@ import com.fernandocejas.cognitive.chatbot.util.DateTime
 import javax.inject.Inject
 
 class ChatDataSource
-@Inject constructor(private val chatApi: ChatApi) {
+@Inject constructor(private val chatService: ChatService) {
 
-    fun startConversation() = buildOutputMessage(chatApi.startConversation().output)
-    fun sendMessage(inputMessage: Message) = buildOutputMessage(chatApi.sendMessage(inputMessage).output)
+    fun startConversation() = buildOutputMessage(chatService.startConversation().output)
+    fun sendMessage(inputMessage: Message) = buildOutputMessage(chatService.sendMessage(inputMessage).output)
 
     private fun buildOutputMessage(strings: List<String>): Message {
         val outputMessage = StringBuilder()
