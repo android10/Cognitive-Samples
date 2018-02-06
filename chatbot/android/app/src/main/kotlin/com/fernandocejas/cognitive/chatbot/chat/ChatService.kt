@@ -1,10 +1,9 @@
 package com.fernandocejas.cognitive.chatbot.chat
 
-import com.fernandocejas.cognitive.chatbot.di.NetworkModule
 import com.fernandocejas.cognitive.chatbot.extension.empty
 import com.ibm.watson.developer_cloud.conversation.v1.Conversation
 import com.ibm.watson.developer_cloud.conversation.v1.model.Context
-import com.ibm.watson.developer_cloud.conversation.v1.model.InputData
+import com.ibm.watson.developer_cloud.conversation.v1.model.InputData.Builder
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageOptions
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse
 import dagger.Lazy
@@ -18,31 +17,25 @@ class ChatService
 
     private var conversationContext: Context = Context()
 
-    fun startConversation(): MessageEntity {
-        val watsonMessage = WatsonMessage()
-        val messageResponse = watsonMessage.send()
-        conversationContext = messageResponse.context
-        return messageFromResponse(messageResponse)
-    }
+    fun startConversation() = WatsonMessage().send()
+    fun sendMessage(inputMessage: Message) = WatsonMessage(inputMessage.text).send()
 
-    fun sendMessage(inputMessage: Message): MessageEntity {
-        val watsonMessage = WatsonMessage(inputMessage.text, conversationContext)
-        val messageResponse = watsonMessage.send()
-        conversationContext = messageResponse.context
-        return messageFromResponse(messageResponse)
-    }
+    inner class WatsonMessage(private val text: String = String.empty()) {
 
-    private fun messageFromResponse(response: MessageResponse) =
-            MessageEntity(response.input.text, response.output.text)
+        fun send(): MessageEntity {
+            val messageOptions = messageBuilder
+                    .input(Builder(text).build())
+                    .context(conversationContext)
+                    .build()
 
+            val messageResponse = conversation.get().message(messageOptions).execute()
+            updateConversationContext(messageResponse)
 
-    inner class WatsonMessage(private val text: String = String.empty(),
-            private val context: Context = Context()) {
+            return MessageEntity(messageResponse.input.text, messageResponse.output.text)
+        }
 
-        fun send(): MessageResponse {
-            val input = InputData.Builder(text).build()
-            val options = messageBuilder.input(input).context(context).build()
-            return conversation.get().message(options).execute()
+        private fun updateConversationContext(messageResponse: MessageResponse) {
+            conversationContext = messageResponse.context
         }
     }
 }
