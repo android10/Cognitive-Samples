@@ -11,7 +11,7 @@ class NetworkModule {
     companion object {
         private const val USER = "5bb88465-2121-4676-8122-2410505c1d87"
         private const val PASS = "vRHx3f7Z8jac"
-        private const val WORKSPACE = "cbdb4b9c-b231-40f8-ba56-78e48d66eaae"
+        private const val WORKSPACE = "30993689-991a-4c57-985b-410330d9ee97"
     }
 
     @Provides @Singleton fun provideConversationService(): Conversation {
