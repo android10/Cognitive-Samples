@@ -7,6 +7,8 @@ class Model {
     fun execute() = evaluateNetwork(inputs, weights)
 
     private fun evaluateNetwork(inputs: Array<Int>, weights: Array<Int>) {
-        println("Hello World")
+        var result = 0
+        inputs.forEachIndexed { index, input -> result += (input * weights[index]) }
+        println("Result: $result")
     }
 }
