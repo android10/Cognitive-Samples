@@ -3,7 +3,7 @@ package com.fernandocejas.kotlin.learning
 import com.fernandocejas.kotlin.extension.roundTwoDecimals
 
 class Model {
-    private val inputs = arrayOf(0.0, 1.0, 0.0, 0.0)
+    private val inputs = arrayOf(0.0, 0.0, 1.0, 0.0)
     private val weights = arrayOf(0.0, 0.0, 0.0, 0.0)
     private val desiredResult = 1.0
     private val learningRate = 0.20
