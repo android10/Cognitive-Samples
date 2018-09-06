@@ -10,9 +10,14 @@ class Model {
     private val learningTrials = 5
 
     fun train() {
+        println("Initial State")
         printNeuralNetworkInfo(inputs, weights)
-        for (i in 1..learningTrials) learn(inputs, weights)
-        printNeuralNetworkInfo(inputs, weights)
+
+        for (i in 1..learningTrials) {
+            learn(inputs, weights)
+            println("Training Round #$i")
+            printNeuralNetworkInfo(inputs, weights)
+        }
     }
 
     private fun learn(inputs: Array<Double>, weights: Array<Double>) {
@@ -32,6 +37,7 @@ class Model {
         val neuralNetOutput = evaluateNeuralNet(inputs, weights)
         val neuralNetError = evaluateNeuralNetError(desiredResult, neuralNetOutput)
 
+        println("Inputs vector: ${inputs.contentToString()}")
         println("Neural Net Output: $neuralNetOutput")
         println("Neural Net Error: $neuralNetError")
         println("Weights vector: ${weights.contentToString()}\n")
